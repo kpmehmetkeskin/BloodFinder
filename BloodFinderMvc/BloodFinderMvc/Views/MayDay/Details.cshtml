@@ -1,0 +1,66 @@
+﻿@model BloodFinderMvc.Models.MayDay
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MayDay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_AppUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_AppUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_Town)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_Town)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FK_BloodGroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FK_BloodGroup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MayDayID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

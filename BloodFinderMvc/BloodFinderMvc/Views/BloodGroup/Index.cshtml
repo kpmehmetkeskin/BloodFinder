@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BloodFinderMvc.Models.BloodGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BloodGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BloodGroupCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BloodGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BloodGroupCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BloodGroupID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BloodGroupID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BloodGroupID })
+        </td>
+    </tr>
+}
+
+</table>

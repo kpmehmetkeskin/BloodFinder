@@ -1,0 +1,75 @@
+﻿@model IEnumerable<BloodFinderMvc.Models.AppUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_BloodGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Guid)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_BloodGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Guid)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AppUserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AppUserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AppUserID })
+        </td>
+    </tr>
+}
+
+</table>

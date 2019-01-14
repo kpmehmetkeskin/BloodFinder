@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BloodFinderMvc.Models.MayDay>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_AppUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FK_BloodGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_AppUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FK_BloodGroup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MayDayID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MayDayID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MayDayID })
+        </td>
+    </tr>
+}
+
+</table>
