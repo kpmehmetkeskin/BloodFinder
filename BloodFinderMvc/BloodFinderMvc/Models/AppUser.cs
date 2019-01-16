@@ -22,6 +22,6 @@ namespace BloodFinderMvc.Models
         public Nullable<int> FK_BloodGroup { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        public string Guid { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace BloodFinderMvc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BloodFinderDBEntities4 : DbContext
+    public partial class DB_A3588B_BloodFinderDBEntities : DbContext
     {
-        public BloodFinderDBEntities4()
-            : base("name=BloodFinderDBEntities4")
+        public DB_A3588B_BloodFinderDBEntities()
+            : base("name=DB_A3588B_BloodFinderDBEntities")
         {
         }
     

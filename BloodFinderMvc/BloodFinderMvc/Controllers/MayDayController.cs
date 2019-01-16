@@ -13,38 +13,21 @@ namespace BloodFinderMvc.Controllers
 {
     public class MayDayController : Controller
     {
-        private BloodFinderDBEntities4 db = new BloodFinderDBEntities4();
+        private DB_A3588B_BloodFinderDBEntities db = new DB_A3588B_BloodFinderDBEntities();
 
-        // GET: MayDay
+        // GET: MayDay?cityID=1&townID=1&bloodGroup=1
         public JsonResult Index()
         {
-            return Json(db.MayDay.ToList(), JsonRequestBehavior.AllowGet);
-        }
+            int cityID = Convert.ToInt32(Request.QueryString["cityID"]);
+            int townID = Convert.ToInt32(Request.QueryString["townID"]);
+            int bloodGroup = Convert.ToInt32(Request.QueryString["bloodGroup"]);
 
-        // GET: MayDay/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MayDay mayDay = db.MayDay.Find(id);
-            if (mayDay == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mayDay);
-        }
+            List<MayDay> maydayList = db.MayDay.Where(x => x.FK_City == cityID && x.FK_Town == townID && x.FK_BloodGroup == bloodGroup).ToList();
 
-        // GET: MayDay/Create
-        public ActionResult Create()
-        {
-            return View();
+            return Json(maydayList, JsonRequestBehavior.AllowGet);
         }
 
         // POST: MayDay/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public ActionResult Create([Bind(Include = "MayDayID,FK_AppUser,FK_City,FK_Town,FK_BloodGroup,Notes,CreateDate")] MayDay mayDay)
         {
@@ -65,70 +48,24 @@ namespace BloodFinderMvc.Controllers
             return Json(new Response("OK"));
         }
 
-        // GET: MayDay/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MayDay mayDay = db.MayDay.Find(id);
-            if (mayDay == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mayDay);
-        }
-
-        // POST: MayDay/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MayDayID,FK_AppUser,FK_City,FK_Town,FK_BloodGroup,Notes,CreateDate")] MayDay mayDay)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(mayDay).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(mayDay);
-        }
-
-        // GET: MayDay/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MayDay mayDay = db.MayDay.Find(id);
-            if (mayDay == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mayDay);
-        }
-
         // POST: MayDay/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public JsonResult DeleteConfirmed(int id)
         {
-            MayDay mayDay = db.MayDay.Find(id);
-            db.MayDay.Remove(mayDay);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                MayDay mayDay = db.MayDay.Find(id);
+                db.MayDay.Remove(mayDay);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return Json(new Response("ERROR"));
+            }
+            
+            return Json(new Response("OK"));
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

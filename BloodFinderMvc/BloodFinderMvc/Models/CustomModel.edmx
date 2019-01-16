@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BloodFinderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_A3588B_BloodFinderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppUser">
           <Key>
             <PropertyRef Name="AppUserID" />
@@ -17,7 +17,7 @@
           <Property Name="FK_BloodGroup" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
-          <Property Name="Guid" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="BloodGroup">
           <Key>
@@ -55,7 +55,7 @@
           <Property Name="CityID" Type="int" Nullable="false" />
           <Property Name="TownName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="BloodFinderDBModelStoreContainer">
+        <EntityContainer Name="DB_A3588B_BloodFinderDBModelStoreContainer">
           <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -66,7 +66,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BloodFinderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DB_A3588B_BloodFinderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AppUser">
           <Key>
             <PropertyRef Name="AppUserID" />
@@ -79,7 +79,7 @@
           <Property Name="FK_BloodGroup" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <Property Name="Guid" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BloodGroup">
           <Key>
@@ -117,7 +117,7 @@
           <Property Name="CityID" Type="Int32" Nullable="false" />
           <Property Name="TownName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="BloodFinderDBEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_A3588B_BloodFinderDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppUser" EntityType="Self.AppUser" />
           <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" />
           <EntitySet Name="City" EntityType="Self.City" />
@@ -129,9 +129,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BloodFinderDBModelStoreContainer" CdmEntityContainer="BloodFinderDBEntities4">
+        <EntityContainerMapping StorageEntityContainer="DB_A3588B_BloodFinderDBModelStoreContainer" CdmEntityContainer="DB_A3588B_BloodFinderDBEntities">
           <EntitySetMapping Name="AppUser">
-            <EntityTypeMapping TypeName="BloodFinderDBModel.AppUser">
+            <EntityTypeMapping TypeName="DB_A3588B_BloodFinderDBModel.AppUser">
               <MappingFragment StoreEntitySet="AppUser">
                 <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
                 <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
@@ -141,12 +141,12 @@
                 <ScalarProperty Name="FK_BloodGroup" ColumnName="FK_BloodGroup" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BloodGroup">
-            <EntityTypeMapping TypeName="BloodFinderDBModel.BloodGroup">
+            <EntityTypeMapping TypeName="DB_A3588B_BloodFinderDBModel.BloodGroup">
               <MappingFragment StoreEntitySet="BloodGroup">
                 <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
                 <ScalarProperty Name="BloodGroupName" ColumnName="BloodGroupName" />
@@ -155,7 +155,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="BloodFinderDBModel.City">
+            <EntityTypeMapping TypeName="DB_A3588B_BloodFinderDBModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
@@ -164,7 +164,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MayDay">
-            <EntityTypeMapping TypeName="BloodFinderDBModel.MayDay">
+            <EntityTypeMapping TypeName="DB_A3588B_BloodFinderDBModel.MayDay">
               <MappingFragment StoreEntitySet="MayDay">
                 <ScalarProperty Name="MayDayID" ColumnName="MayDayID" />
                 <ScalarProperty Name="FK_AppUser" ColumnName="FK_AppUser" />
@@ -177,7 +177,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Town">
-            <EntityTypeMapping TypeName="BloodFinderDBModel.Town">
+            <EntityTypeMapping TypeName="DB_A3588B_BloodFinderDBModel.Town">
               <MappingFragment StoreEntitySet="Town">
                 <ScalarProperty Name="TownID" ColumnName="TownID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
